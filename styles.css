@@ -1,0 +1,147 @@
+:root {
+  --ink: #242424;
+  --ink-soft: #555;
+  --line: #d8d2c8;
+  --paper: #ffffff;
+  --bg: #f4f1ec;
+  --accent: #1f3a5f;
+  --accent-soft: #e8eef5;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ---------- Header (app chrome, hidden when printing) ---------- */
+.app-header {
+  background: var(--accent);
+  color: #fff;
+  padding: 18px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+.app-header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-header-titles h1 {
+  margin: 2px 0 0;
+  font-size: 20px;
+  font-weight: 650;
+}
+.kicker {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.save-state {
+  max-width: 900px;
+  margin: 10px auto 0;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.btn {
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+}
+.btn:hover { background: rgba(255, 255, 255, 0.22); }
+.btn-danger { border-color: rgba(255, 180, 180, 0.6); }
+
+.btn-primary {
+  font: inherit;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+.btn-primary:hover { background: #2a4a73; }
+
+.send-status { font-size: 13px; color: var(--ink-soft); min-height: 18px; margin: 8px 0 0; }
+
+/* ---------- Fiche ---------- */
+.fiche {
+  max-width: 900px;
+  margin: 24px auto 60px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.card h2 { margin: 0 0 14px; font-size: 18px; }
+
+.fiche-entete .field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ---------- Form fields ---------- */
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.field > span { font-size: 12px; font-weight: 600; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+.field input,
+.field textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid #c9c2b6;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+}
+.field textarea { resize: vertical; }
+.field input:focus, .field textarea:focus {
+  outline: 2px solid var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+@media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+.field-full { grid-column: 1 / -1; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .app-header-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .fiche { margin: 0 auto; max-width: none; padding: 0; gap: 12px; }
+  .card { border: none; box-shadow: none; border-radius: 0; padding: 0; }
+  .fiche-entete { border-bottom: 2px solid var(--ink); border-radius: 0; padding-bottom: 12px; }
+}

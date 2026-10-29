@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fiche de Monitoring Quotidien – CPI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="no-print app-header">
+    <div class="app-header-inner">
+      <div class="app-header-titles">
+        <p class="kicker">COMPAGNIE PRESTIGE IMMOBILIER · CPI / DG / CRH</p>
+        <h1>Fiche de Monitoring Quotidien du Personnel</h1>
+      </div>
+      <div class="actions">
+        <button type="button" id="btn-import" class="btn">Importer</button>
+        <button type="button" id="btn-export" class="btn">Exporter</button>
+        <button type="button" id="btn-reset" class="btn btn-danger">Réinitialiser</button>
+        <button type="button" id="btn-print" class="btn">Imprimer / PDF</button>
+      </div>
+    </div>
+    <p class="save-state">Sauvegarde automatique sur cet appareil&nbsp;: <span id="save-state">prête</span></p>
+  </header>
+
+  <main class="fiche">
+    <section class="fiche-entete card">
+      <div class="field-grid">
+        <label class="field">
+          <span>Date</span>
+          <input type="text" id="f-date" placeholder="jj/mm/aaaa" />
+        </label>
+        <label class="field">
+          <span>Direction / Service</span>
+          <input type="text" id="f-direction" placeholder="Direction / Service" />
+        </label>
+        <label class="field">
+          <span>Nom</span>
+          <input type="text" id="f-nom" placeholder="Nom" />
+        </label>
+        <label class="field">
+          <span>Prénom</span>
+          <input type="text" id="f-prenom" placeholder="Prénom" />
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. Évaluation de la journée</h2>
+      <div class="grid-2">
+        <label class="field">
+          <span>Principales réalisations du service</span>
+          <textarea id="ev-realises" rows="4" placeholder="…"></textarea>
+        </label>
+        <label class="field">
+          <span>Tâches non achevées et motifs</span>
+          <textarea id="ev-non-achev" rows="4" placeholder="…"></textarea>
+        </label>
+        <label class="field">
+          <span>Difficultés ayant affecté le travail</span>
+          <textarea id="ev-difficultes" rows="4" placeholder="…"></textarea>
+        </label>
+        <label class="field">
+          <span>Besoins d'accompagnement ou de moyens</span>
+          <textarea id="ev-besoins" rows="4" placeholder="…"></textarea>
+        </label>
+        <label class="field field-full">
+          <span>Actions prioritaires à poursuivre le lendemain</span>
+          <textarea id="ev-actions" rows="3" placeholder="…"></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Envoi</h2>
+      <div class="grid-2">
+        <label class="field">
+          <span>Destinataire</span>
+          <input type="email" id="mail-destinataire" placeholder="ex. contact@exemple.com" />
+        </label>
+        <label class="field">
+          <span>Objet</span>
+          <input type="text" id="mail-sujet" placeholder="Fiche de monitoring quotidien – CPI" />
+        </label>
+      </div>
+      <label class="field">
+        <span>Message</span>
+        <textarea id="mail-corps" rows="8" placeholder="…"></textarea>
+      </label>
+      <p class="send-status" id="send-status"></p>
+      <button type="button" id="btn-send" class="btn btn-primary">Envoyer</button>
+    </section>
+  </main>
+
+  <input type="file" id="file-import" accept="application/json,.json" hidden />
+  <script src="app.js"></script>
+</body>
+</html>
