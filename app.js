@@ -126,46 +126,6 @@ function bind() {
   });
 
   document.getElementById("btn-send")?.addEventListener("click", envoyer);
-
-  document.getElementById("btn-reset")?.addEventListener("click", () => {
-    if (!window.confirm("Réinitialiser toute la fiche ?")) return;
-    state = defaultState();
-    render();
-    persist();
-  });
-
-  document.getElementById("btn-export")?.addEventListener("click", () => {
-    const payload = { app: "fiche-monitoring-quotidien", version: 3, savedAt: new Date().toISOString(), ...state };
-    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `fiche-monitoring-${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-  });
-
-  document.getElementById("btn-import")?.addEventListener("click", () => document.getElementById("file-import").click());
-  document.getElementById("file-import")?.addEventListener("change", (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const parsed = JSON.parse(String(reader.result));
-        state = { ...defaultState(), ...parsed, email: { ...defaultState().email, ...(parsed.email || {}) } };
-        render();
-        persist();
-        window.alert("Fiche importée.");
-      } catch {
-        window.alert("Fichier JSON invalide.");
-      }
-    };
-    reader.readAsText(file);
-    e.target.value = "";
-  });
-
-  document.getElementById("btn-print")?.addEventListener("click", () => window.print());
 }
 
 async function envoyer() {

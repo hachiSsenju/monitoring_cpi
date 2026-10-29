@@ -21,9 +21,6 @@ Single-page app (SPA) for filling the daily staff monitoring form:
 - Nom et prénom séparés
 - Saisie en français, responsive (mobile / desktop)
 - Sauvegarde automatique dans `localStorage`
-- Export / Import au format JSON
-- Réinitialisation
-- Impression / export PDF (bouton « Imprimer / PDF »)
 - Envoi de la fiche par e-mail via le backend (`POST` vers `MAIL_ENDPOINT`, envoi SMTP Brevo / Hostinger)
 
 ## Configuration e-mail
@@ -54,7 +51,7 @@ Modifiez `MAIL_ENDPOINT` si votre backend expose un autre point d'entrée.
 Aucune dépendance, aucun build.
 
 ```bash
-cd /Users/komizi.inc/Desktop/Monitor/fiche-monitoring
+cd /Users/komizi.inc/Desktop/Monitor
 python3 -m http.server 8765
 # puis ouvrir http://localhost:8765
 ```
